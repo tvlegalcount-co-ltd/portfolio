@@ -10,11 +10,11 @@ Mở file `src/config.ts` và cập nhật các thông tin sau:
 
 ```typescript
 export const companyInfo = {
-	name: 'TV Legal Count',           // Tên công ty
-	address: '1B Đường 359...',       // Địa chỉ
-	phone: '+84 934 056 090',        // Số điện thoại
-	email: 'admin@tvlegalcount.com', // Email
-	hotline: '+84 934 056 090',      // Hotline
+  name: "TV Legal Count", // Tên công ty
+  address: "1B Đường 359...", // Địa chỉ
+  phone: "+84 934 056 090", // Số điện thoại
+  email: "admin@tvlegalcount.com", // Email
+  hotline: "+84 934 056 090", // Hotline
 };
 ```
 
@@ -24,10 +24,10 @@ Mặc định sử dụng **blue-500** làm màu chính. Để đổi màu:
 
 ```typescript
 export const colors = {
-	primary: {
-		500: 'bg-blue-500',  // Thay thành 'bg-purple-500', 'bg-green-500', etc.
-		// ... các shade khác
-	},
+  primary: {
+    500: "bg-blue-500", // Thay thành 'bg-purple-500', 'bg-green-500', etc.
+    // ... các shade khác
+  },
 };
 ```
 
@@ -35,10 +35,10 @@ export const colors = {
 
 ```typescript
 export const stats = {
-	customers: '2000+',
-	years: '10+',
-	consultants: '100+',
-	satisfaction: '99%',
+  customers: "2000+",
+  years: "10+",
+  consultants: "100+",
+  satisfaction: "99%",
 };
 ```
 
@@ -46,10 +46,10 @@ export const stats = {
 
 ```typescript
 export const navLinks = [
-	{ name: 'Trang chủ', href: '/' },
-	{ name: 'Về chúng tôi', href: '/about' },
-	{ name: 'Dịch vụ', href: '/services' },
-	{ name: 'Liên hệ', href: '/contact' },
+  { name: "Trang chủ", href: "/" },
+  { name: "Về chúng tôi", href: "/about" },
+  { name: "Dịch vụ", href: "/services" },
+  { name: "Liên hệ", href: "/contact" },
 ];
 ```
 
@@ -57,13 +57,13 @@ export const navLinks = [
 
 ```typescript
 export const pricing = {
-	startupVietnam: {
-		service: '2.900.000 đồng',
-		total: '3.900.000 – 7.900.000 đồng',
-	},
-	accounting: {
-		from: 'Từ 1.500.000 đồng/tháng',
-	},
+  startupVietnam: {
+    service: "2.900.000 đồng",
+    total: "3.900.000 – 7.900.000 đồng",
+  },
+  accounting: {
+    from: "Từ 1.500.000 đồng/tháng",
+  },
 };
 ```
 
@@ -71,37 +71,43 @@ export const pricing = {
 
 ```typescript
 export const seo = {
-	defaultTitle: 'TV Legal Count',
-	defaultDescription: 'Mô tả website',
-	siteUrl: 'https://tvlegalcount.com',
+  defaultTitle: "TV Legal Count",
+  defaultDescription: "Mô tả website",
+  siteUrl: "https://tvlegalcount.com",
 };
 ```
 
 ## Sử dụng trong các components
 
 ### Header Component
+
 ```astro
 ---
-import { companyInfo, navLinks } from '../../config';
+import { companyInfo, navLinks } from "../../config";
 ---
+
 <!-- Tự động lấy từ config -->
 <span>{companyInfo.name}</span>
 ```
 
 ### Footer Component
+
 ```astro
 ---
-import { companyInfo, navLinks, socialLinks } from '../../config';
+import { companyInfo, navLinks, socialLinks } from "../../config";
 ---
+
 <!-- Tự động lấy từ config -->
 <p>{companyInfo.email}</p>
 ```
 
 ### Contact Page
+
 ```astro
 ---
-import { companyInfo } from '../config';
+import { companyInfo } from "../config";
 ---
+
 <!-- Tự động lấy từ config -->
 <a href={`tel:${companyInfo.phone}`}>{companyInfo.phone}</a>
 ```
