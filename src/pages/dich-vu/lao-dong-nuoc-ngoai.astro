@@ -12,7 +12,6 @@ const services = [
     title: "Visa cho người nước ngoài",
     description: "Tư vấn và làm thủ tục xin visa Việt Nam cho người nước ngoài",
     icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
-    price: "Liên hệ",
     href: "#",
     color: "blue",
     colorClass: "from-blue-700 to-blue-800",
@@ -31,7 +30,6 @@ const services = [
     title: "Giấy phép lao động",
     description: "Xin cấp giấy phép lao động cho người nước ngoài làm việc tại Việt Nam",
     icon: "M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2",
-    price: "Từ 2.000.000 đồng",
     href: "#",
     color: "green",
     colorClass: "from-green-600 to-green-800",
@@ -49,7 +47,6 @@ const services = [
     title: "Thẻ tạm trú",
     description: "Làm thủ tục cấp thẻ tạm trú cho người nước ngoài",
     icon: "M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2",
-    price: "Liên hệ",
     href: "#",
     color: "purple",
     colorClass: "from-purple-600 to-purple-800",
@@ -67,7 +64,6 @@ const services = [
     title: "Thủ tục xuất nhập cảnh",
     description: "Các thủ tục liên quan đến xuất nhập cảnh cho người nước ngoài",
     icon: "M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4",
-    price: "Liên hệ",
     href: "#",
     color: "indigo",
     colorClass: "from-indigo-600 to-indigo-800",
@@ -106,7 +102,7 @@ const faqs = [
   title={page.title}
   icon={page.icon}
   description={page.description}
-  showPricing={false}
+ 
   heroBackground="/hero-service.jpg"
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -147,7 +143,7 @@ const faqs = [
               </div>
 
               <div class="p-6">
-                <ul class="space-y-3 mb-6">
+                <ul class="space-y-3 mb-4 md:mb-6">
                   {service.features.map((feature) => (
                     <li class="flex items-start">
                       <svg
@@ -188,7 +184,7 @@ const faqs = [
 
       <!-- Process Section -->
       <div class="bg-gradient-to-r from-blue-700 to-blue-800 rounded-lg p-8 mb-16 text-white">
-        <h3 class="text-2xl font-bold mb-6 text-center">Quy trình xin giấy phép lao động</h3>
+        <h3 class="text-2xl font-bold mb-4 md:mb-6 text-center">Quy trình xin giấy phép lao động</h3>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           {
             [
@@ -211,13 +207,13 @@ const faqs = [
 
       <!-- FAQ Section -->
       <div class="bg-gray-50 rounded-lg p-8">
-        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Câu hỏi thường gặp</h3>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 text-center">Câu hỏi thường gặp</h3>
         <div class="space-y-4 max-w-4xl mx-auto">
           {
             faqs.map((faq) => (
               <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
                 <details class="group">
-                  <summary class="flex items-center justify-between p-6 cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                  <summary class="flex items-center justify-between p-3 md:p-6 cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                     <h3 class="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
                     <svg
                       class="w-6 h-6 text-gray-500 transform group-open:rotate-180 transition-transform duration-200 flex-shrink-0"
@@ -233,7 +229,7 @@ const faqs = [
                       />
                     </svg>
                   </summary>
-                  <div class="p-6 border-t border-gray-200">
+                  <div class="p-3 md:p-6 border-t border-gray-200">
                     <div class="prose prose-sm max-w-none text-gray-700" set:html={faq.a} />
                   </div>
                 </details>

@@ -6,8 +6,6 @@ const service = {
   title: "Rà soát & Xây dựng Hợp đồng",
   icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
   description: "Hãy để chúng tôi là cánh tay đắc lực hỗ trợ bạn!",
-  price: "Liên hệ",
-  timeframe: "3 đến 7 ngày làm việc",
   whatYouProvide: [
     "Bản dự thảo hợp đồng (nếu có)",
     "Thông tin về các bên tham gia",
@@ -37,16 +35,16 @@ const service = {
   title={service.title}
   icon={service.icon}
   description={service.description}
-  price={service.price}
-  timeframe={service.timeframe}
-  showPricing={true}
+ }
+ }
+ 
   heroBackground="/hero-service.jpg"
 >
   <!-- Dịch vụ của chúng tôi -->
-  <section class="py-16">
+  <section class="py-8 md:py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">DỊCH VỤ CỦA CHÚNG TÔI</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -68,11 +66,11 @@ const service = {
   </section>
 
   <!-- Loại hình hợp đồng -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-8 md:py-16 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">LOẠI HÌNH HỢP ĐỒNG</h2>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6">LOẠI HÌNH HỢP ĐỒNG</h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             {
               [
@@ -114,11 +112,11 @@ const service = {
   </section>
 
   <!-- Tại sao cần rà soát hợp đồng -->
-  <section class="py-16">
+  <section class="py-8 md:py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">TẠI SAO CẦN RÀ SOÁT HỢP ĐỒNG?</h2>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6">TẠI SAO CẦN RÀ SOÁT HỢP ĐỒNG?</h2>
           <ul class="space-y-4">
             {
               [
@@ -153,10 +151,10 @@ const service = {
   </section>
 
   <!-- Quy trình 5 bước -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-8 md:py-16 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">QUY TRÌNH 5 BƯỚC</h2>
         </div>
         <div class="space-y-6">
@@ -185,10 +183,10 @@ const service = {
   </section>
 
   <!-- FAQ -->
-  <section class="py-16">
+  <section class="py-8 md:py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">FAQ</h2>
         </div>
         <div class="space-y-4">
@@ -209,7 +207,7 @@ const service = {
             ].map((faq) => (
               <div class="bg-white rounded-lg shadow overflow-hidden">
                 <details class="group">
-                  <summary class="flex justify-between p-6 cursor-pointer bg-gray-50 hover:bg-gray-100">
+                  <summary class="flex justify-between p-3 md:p-6 cursor-pointer bg-gray-50 hover:bg-gray-100">
                     <h3 class="font-semibold pr-4">{faq.q}</h3>
                     <svg
                       class="w-6 h-6 transform group-open:rotate-180"
@@ -225,7 +223,7 @@ const service = {
                       />
                     </svg>
                   </summary>
-                  <div class="p-6 border-t prose prose-sm" set:html={faq.a} />
+                  <div class="p-3 md:p-6 border-t prose prose-sm" set:html={faq.a} />
                 </details>
               </div>
             ))

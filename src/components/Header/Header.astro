@@ -2,9 +2,6 @@
 import { companyInfo, navLinks } from "../../config";
 import { getNavWithBase, getFullPath } from "../../utils/url";
 
-const logoLetter = companyInfo.name.charAt(0);
-const primaryBg600 = "bg-blue-700";
-
 // Get nav links with base prefix
 const navLinksWithBase = getNavWithBase(navLinks);
 ---
@@ -13,10 +10,8 @@ const navLinksWithBase = getNavWithBase(navLinks);
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
-      <a href={getFullPath("/")} class="flex items-center space-x-2">
-        <div class={`w-8 h-8 ${primaryBg600} rounded-lg flex items-center justify-center`}>
-          <span class="text-white font-bold text-lg">{logoLetter}</span>
-        </div>
+      <a href={getFullPath("/")} class="flex items-center space-x-3">
+        <img src={getFullPath("/logo.svg")} alt="TV Legal Count Logo" class="h-10 w-auto" />
         <span class="text-xl font-bold text-gray-900">{companyInfo.name}</span>
       </a>
 

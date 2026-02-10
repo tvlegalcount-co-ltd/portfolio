@@ -30,9 +30,6 @@ const services = [
 			'Hỗ trợ Tiếp đoàn thẩm định sau đăng ký kinh doanh hoặc cơ quan quản lý thuế',
 			'Hỗ trợ trọn gói, tư vấn miễn phí tất cả các vấn đề phát sinh',
 		],
-		price: '2.900.000 đồng',
-		totalPrice: '3.900.000 – 7.900.000 đồng',
-		timeframe: '3 đến 5 ngày làm việc',
 		consulting: [
 			'Tư vấn lựa chọn loại hình doanh nghiệp phù hợp',
 			'Tư vấn đặt tên công ty theo mong muốn và đúng luật',
@@ -89,7 +86,6 @@ const services = [
 			'Tư vấn tối ưu hóa chi phí',
 			'Làm việc với cơ quan thuế',
 		],
-		price: 'Từ 1.500.000 đồng/tháng',
 		benefits: [
 			'Đội ngũ kế toán trưởng chuyên nghiệp',
 			'Đảm bảo tuân thủ pháp luật',
@@ -109,14 +105,14 @@ const services = [
 
 		<div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="max-w-4xl mx-auto text-center">
-				<div class="flex items-center justify-center gap-6 mb-8">
+				<div class="flex items-center justify-center gap-6 mb-4 md:mb-6 md:mb-8">
 					<div class="flex-shrink-0 w-20 h-20 bg-white/30 backdrop-blur-md rounded-lg flex items-center justify-center border-2 border-white/40 shadow-xl">
 						<svg class="w-10 h-10 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
 						</svg>
 					</div>
 				</div>
-				<h1 class="text-4xl sm:text-5xl font-bold mb-6 text-white drop-shadow-lg">Dịch vụ của chúng tôi</h1>
+				<h1 class="text-4xl sm:text-5xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg">Dịch vụ của chúng tôi</h1>
 				<p class="text-xl text-blue-100 drop-shadow-md">
 					Chúng tôi cung cấp các giải pháp toàn diện giúp doanh nghiệp của bạn phát triển bền vững
 				</p>
@@ -125,9 +121,9 @@ const services = [
 	</section>
 
 	<!-- Why Choose Us -->
-	<section class="py-16 bg-gray-50">
+	<section class="py-8 md:py-16 bg-gray-50">
 		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-12">
+			<div class="text-center mb-4 md:mb-12">
 				<h2 class="text-3xl font-bold text-gray-900 mb-4">
 					Tại sao hơn 2.000 doanh nghiệp đã chọn chúng tôi?
 				</h2>
@@ -198,7 +194,7 @@ const services = [
 	</section>
 
 	<!-- Services List -->
-	<section class="py-20">
+	<section class="py-10 md:py-20">
 		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 			{services.map((service) => (
 				<div id={service.id} class="mb-20 last:mb-0">
@@ -223,7 +219,7 @@ const services = [
 							{service.whatYouProvide && (
 								<>
 									<h3 class="text-xl font-bold text-gray-900 mb-4">KHÁCH HÀNG CẦN CUNG CẤP GÌ?</h3>
-									<ul class="space-y-3 mb-8">
+									<ul class="space-y-3 mb-4 md:mb-6 md:mb-8">
 										{service.whatYouProvide.map((item) => (
 											<li class="flex items-start">
 												<svg class="w-5 h-5 text-blue-700 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,7 +235,7 @@ const services = [
 							{service.whatYouReceive && (
 								<>
 									<h3 class="text-xl font-bold text-gray-900 mb-4">SẢN PHẨM KHÁCH HÀNG SẼ NHẬN ĐƯỢC</h3>
-									<ul class="space-y-3 mb-8">
+									<ul class="space-y-3 mb-4 md:mb-6 md:mb-8">
 										{service.whatYouReceive.map((item) => (
 											<li class="flex items-start">
 												<svg class="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -255,7 +251,7 @@ const services = [
 							{service.consulting && (
 								<>
 									<h3 class="text-xl font-bold text-gray-900 mb-4">LUẬT SƯ SẼ TƯ VẤN NHỮNG GÌ?</h3>
-									<ul class="space-y-3 mb-8">
+									<ul class="space-y-3 mb-4 md:mb-6 md:mb-8">
 										{service.consulting.map((item) => (
 											<li class="flex items-start">
 												<svg class="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -271,7 +267,7 @@ const services = [
 							{service.features && (
 								<>
 									<h3 class="text-xl font-bold text-gray-900 mb-4">TÍNH NĂNG DỊCH VỤ</h3>
-									<ul class="space-y-3 mb-8">
+									<ul class="space-y-3 mb-4 md:mb-6 md:mb-8">
 										{service.features.map((item) => (
 											<li class="flex items-start">
 												<svg class="w-5 h-5 text-blue-700 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -287,7 +283,7 @@ const services = [
 							{service.benefits && (
 								<>
 									<h3 class="text-xl font-bold text-gray-900 mb-4">LỢI ÍCH CHO KHÁCH HÀNG</h3>
-									<ul class="space-y-3 mb-8">
+									<ul class="space-y-3 mb-4 md:mb-6 md:mb-8">
 										{service.benefits.map((item) => (
 											<li class="flex items-start">
 												<svg class="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -302,7 +298,7 @@ const services = [
 
 							<!-- Pricing & Time -->
 							{service.price || service.totalPrice || service.timeframe ? (
-								<div class="bg-gray-50 rounded-lg p-6 mb-6">
+								<div class="bg-gray-50 rounded-lg p-6 mb-4 md:mb-6">
 									<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 										{service.price && (
 											<div class="bg-white/50 backdrop-blur-sm rounded-lg p-4 border border-white/30">
@@ -352,7 +348,7 @@ const services = [
 	<section class="py-20 bg-gray-50">
 		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="max-w-4xl mx-auto">
-				<div class="text-center mb-12">
+				<div class="text-center mb-4 md:mb-12">
 					<h2 class="text-3xl font-bold text-gray-900 mb-4">Quy trình 5 bước thành lập doanh nghiệp</h2>
 					<p class="text-xl text-gray-600">Chúng tôi cam kết quy trình nhanh chóng, chuyên nghiệp</p>
 				</div>
@@ -385,7 +381,7 @@ const services = [
 		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="max-w-3xl mx-auto text-center">
 				<h2 class="text-3xl font-bold mb-4">Bạn cần tư vấn thêm?</h2>
-				<p class="text-xl text-blue-100 mb-8">
+				<p class="text-xl text-blue-100 mb-4 md:mb-6 md:mb-8">
 					Liên hệ ngay với chúng tôi để được tư vấn miễn phí và báo giá chi tiết
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center">

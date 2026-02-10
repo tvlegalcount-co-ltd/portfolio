@@ -6,8 +6,6 @@ const service = {
   title: "Giải thể Doanh nghiệp",
   icon: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16",
   description: "Hãy để chúng tôi là cánh tay đắc lực hỗ trợ bạn!",
-  price: "Liên hệ",
-  timeframe: "30 đến 45 ngày làm việc",
   whatYouProvide: [
     "Giấy chứng nhận đăng ký doanh nghiệp",
     "Quyết định giải thể doanh nghiệp",
@@ -38,16 +36,16 @@ const service = {
   title={service.title}
   icon={service.icon}
   description={service.description}
-  price={service.price}
-  timeframe={service.timeframe}
-  showPricing={true}
+ }
+ }
+ 
   heroBackground="/hero-service.jpg"
 >
   <!-- Điều kiện giải thể -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-8 md:py-16 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">ĐIỀU KIỆN GIẢI THỂ</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -74,11 +72,11 @@ const service = {
   </section>
 
   <!-- Khách hàng cần cung cấp -->
-  <section class="py-16">
+  <section class="py-8 md:py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">KHÁCH HÀNG CẦN CUNG CẤP</h2>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6">KHÁCH HÀNG CẦN CUNG CẤP</h2>
           <ul class="space-y-4">
             {
               service.whatYouProvide.map((item) => (
@@ -107,11 +105,11 @@ const service = {
   </section>
 
   <!-- Sản phẩm nhận được -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-8 md:py-16 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">SẢN PHẨM NHẬN ĐƯỢC</h2>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6">SẢN PHẨM NHẬN ĐƯỢC</h2>
           <ul class="space-y-4">
             {
               service.whatYouReceive.map((item) => (
@@ -140,10 +138,10 @@ const service = {
   </section>
 
   <!-- Quy trình 5 bước giải thể -->
-  <section class="py-16">
+  <section class="py-8 md:py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">QUY TRÌNH 5 BƯỚC GIẢI THỂ</h2>
         </div>
         <div class="space-y-6">
@@ -172,10 +170,10 @@ const service = {
   </section>
 
   <!-- FAQ -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-8 md:py-16 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">FAQ</h2>
         </div>
         <div class="space-y-4">
@@ -200,7 +198,7 @@ const service = {
             ].map((faq) => (
               <div class="bg-white rounded-lg shadow overflow-hidden">
                 <details class="group">
-                  <summary class="flex justify-between p-6 cursor-pointer bg-gray-50 hover:bg-gray-100">
+                  <summary class="flex justify-between p-3 md:p-6 cursor-pointer bg-gray-50 hover:bg-gray-100">
                     <h3 class="font-semibold pr-4">{faq.q}</h3>
                     <svg
                       class="w-6 h-6 transform group-open:rotate-180"
@@ -216,7 +214,7 @@ const service = {
                       />
                     </svg>
                   </summary>
-                  <div class="p-6 border-t prose prose-sm" set:html={faq.a} />
+                  <div class="p-3 md:p-6 border-t prose prose-sm" set:html={faq.a} />
                 </details>
               </div>
             ))

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1d4ed8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="180" height="180" rx="40" fill="url(#bgGrad)"/>
+
+  <!-- Justice/Legal Icon (Larger) -->
+  <g transform="translate(30, 35)">
+    <!-- Scale Base -->
+    <rect x="5" y="80" width="110" height="12" rx="6" fill="#ffffff"/>
+
+    <!-- Scale Pillar -->
+    <rect x="55" y="40" width="20" height="60" rx="10" fill="#ffffff"/>
+
+    <!-- Scale Pan - Left -->
+    <ellipse cx="30" cy="75" rx="25" ry="18" fill="#93c5fd" stroke="#ffffff" stroke-width="2"/>
+
+    <!-- Scale Pan - Right -->
+    <ellipse cx="90" cy="75" rx="25" ry="18" fill="#93c5fd" stroke="#ffffff" stroke-width="2"/>
+
+    <!-- Top Decorative Circle -->
+    <circle cx="60" cy="20" r="15" fill="#fbbf24" stroke="#ffffff" stroke-width="2"/>
+
+    <!-- Inner Detail -->
+    <circle cx="60" cy="20" r="8" fill="#ffffff" opacity="0.3"/>
+  </g>
+
+  <!-- Company Name -->
+  <text x="90" y="155" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">TV LEGAL COUNT</text>
+  <text x="90" y="170" font-family="Arial, sans-serif" font-size="12" fill="#93c5fd" text-anchor="middle">Tư vấn pháp lý</text>
+</svg>

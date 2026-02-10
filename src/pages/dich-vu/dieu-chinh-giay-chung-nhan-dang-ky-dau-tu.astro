@@ -1,0 +1,500 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import { getFullPath } from "../../utils/url";
+
+const service = {
+  id: "adjust-irc",
+  title: "Điều chỉnh Giấy chứng nhận đăng ký đầu tư",
+  icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+  description: "Thủ tục điều chỉnh, thay đổi nội dung Giấy chứng nhận đăng ký đầu tư (IRC)",
+};
+
+const cases = [
+  "Thay đổi tên nhà đầu tư",
+  "Thay đổi địa chỉ trụ sở của nhà đầu tư",
+  "Thay đổi người đại diện theo pháp luật của nhà đầu tư",
+  "Thay đổi nội dung dự án đầu tư",
+  "Thay đổi vốn đầu tư",
+  "Thay đổi thời hạn thực hiện dự án",
+  "Các thay đổi khác liên quan đến dự án đầu tư",
+];
+
+const documents = [
+  "Văn bản đề nghị điều chỉnh Giấy chứng nhận đăng ký đầu tư",
+  "Quyết định điều chỉnh nội dung dự án đầu tư",
+  "Bản sao công chứng giấy tờ pháp lý của nhà đầu tư (nếu thay đổi)",
+  "Giấy tờ chứng minh thay đổi (vốn, thời hạn, v.v.)",
+  "Giấy chứng nhận đăng ký đầu tư cũ (bản chính)",
+  "Giấy ủy quyền cho người thực hiện thủ tục (nếu có)",
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Tư vấn và Xác định",
+    description: "Tư vấn về nội dung cần điều chỉnh, thủ tục pháp lý liên quan",
+  },
+  {
+    step: "02",
+    title: "Chuẩn bị hồ sơ",
+    description: "Soạn thảo văn bản, chuẩn bị giấy tờ chứng minh cho nội dung điều chỉnh",
+  },
+  {
+    step: "03",
+    title: "Nộp hồ sơ",
+    description: "Nộp hồ sơ điều chỉnh tại cơ quan cấp phép IRC",
+  },
+  {
+    step: "04",
+    title: "Xem xét và cấp mới",
+    description: "Cơ quan nhà nước xem xét và cấp Giấy chứng nhận đã điều chỉnh",
+  },
+  {
+    step: "05",
+    title: "Cập nhật thông tin",
+    description: "Cập nhật thông tin tại các cơ quan thuế, ngân hàng và cơ quan khác",
+  },
+];
+
+const timeline = [
+  {
+    case: "Điều chỉnh đơn giản",
+    time: "07-10 ngày làm việc",
+    note: "Các thay đổi về thông tin hành chính, không ảnh hưởng đến nội dung dự án",
+  },
+  {
+    case: "Điều chỉnh phức tạp",
+    time: "15-20 ngày làm việc",
+    note: "Các thay đổi về vốn, thời hạn, ngành nghề kinh doanh, v.v.",
+  },
+];
+
+const benefits = [
+  {
+    title: "Tuân thủ pháp luật",
+    description: "Đảm bảo mọi thay đổi đều được ghi nhận và cấp phép đúng quy định",
+  },
+  {
+    title: "Tránh rủi ro",
+    description: "Giảm thiểu rủi ro pháp lý khi thực hiện thay đổi dự án",
+  },
+  {
+    title: "Tiết kiệm thời gian",
+    description: "Xử lý nhanh chóng, chính xác các thủ tục điều chỉnh",
+  },
+  {
+    title: "Hỗ trợ toàn diện",
+    description: "Tư vấn cả các thay đổi liên quan đến thuế, kế toán sau điều chỉnh",
+  },
+];
+
+const faqs = [
+  {
+    question: "Khi nào cần điều chỉnh Giấy chứng nhận đăng ký đầu tư?",
+    answer: "Khi có bất kỳ thay đổi nào liên quan đến thông tin nhà đầu tư hoặc nội dung dự án đầu tư đã được cấp phép như: thay đổi tên, địa chỉ, vốn đầu tư, thời hạn thực hiện dự án, ngành nghề kinh doanh, v.v.",
+  },
+  {
+    question: "Thủ tục điều chỉnh có phức tạp không?",
+    answer: "Độ phức tạp phụ thuộc vào nội dung điều chỉnh. Các thay đổi về thông tin hành chính đơn giản hơn so với thay đổi về vốn, ngành nghề hoặc thời hạn dự án.",
+  },
+  {
+    question: "Điều chỉnh IRC có ảnh hưởng đến hoạt động kinh doanh không?",
+    answer: "Trong quá trình điều chỉnh, doanh nghiệp vẫn có thể hoạt động bình thường. Tuy nhiên, cần hoàn tất thủ tục điều chỉnh để đảm bảo tuân thủ pháp luật và tránh rủi ro.",
+  },
+  {
+    question: "Có cần đóng thuế khi điều chỉnh vốn không?",
+    answer: "Tùy trường hợp. Việc tăng vốn đầu tư thường không phát sinh thuế, nhưng việc chuyển nhượng vốn hoặc giảm vốn có thể phát sinh nghĩa vụ thuế thu nhập cá nhân/doanh nghiệp. Cần tư vấn cụ thể theo từng trường hợp.",
+  },
+];
+---
+
+<PageLayout
+  title={service.title}
+  icon={service.icon}
+  description={service.description}
+  heroBackground="/hero-service.jpg"
+>
+  <!-- Introduction -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            Tổng quan về Dịch vụ
+          </h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-4">
+            Trong quá trình hoạt động, doanh nghiệp có vốn đầu tư nước ngoài thường xuyên có nhu cầu điều chỉnh Giấy chứng nhận đăng ký đầu tư (IRC) do thay đổi về thông tin nhà đầu tư, quy mô dự án, vốn đầu tư hoặc các yếu tố khác. Việc điều chỉnh cần thực hiện đúng thủ tục pháp lý để đảm bảo tính pháp lý và tránh rủi ro.
+          </p>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            TV Legal Count cung cấp dịch vụ tư vấn và thực hiện thủ tục điều chỉnh IRC nhanh chóng, chính xác, đảm bảo tuân thủ đúng quy định pháp luật hiện hành.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                ></path>
+              </svg>
+            </div>
+            Các trường hợp cần điều chỉnh IRC
+          </h2>
+          <ul class="space-y-4">
+            {
+              cases.map((item) => (
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span class="text-gray-700 text-lg">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Thời gian thực hiện</h2>
+          <p class="text-xl text-gray-600">Phụ thuộc vào loại điều chỉnh</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {
+            timeline.map((item) => (
+              <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg
+                      class="w-6 h-6 text-blue-700"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-gray-900">{item.case}</h3>
+                    <p class="text-blue-700 font-semibold">{item.time}</p>
+                  </div>
+                </div>
+                <p class="text-gray-600">{item.note}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents Required -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            Hồ sơ cần chuẩn bị
+          </h2>
+          <ul class="space-y-4">
+            {
+              documents.map((item) => (
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span class="text-gray-700 text-lg">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-4 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            QUY TRÌNH 5 BƯỚC ĐIỀU CHỈNH IRC
+          </h2>
+          <p class="text-xl text-gray-600">
+            Chúng tôi cam kết quy trình nhanh chóng, chuyên nghiệp
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          {
+            process.map((item, index) => (
+              <div class="flex gap-6 items-start">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                  {index + 1}
+                </div>
+                <div class="flex-1 bg-white p-6 rounded-lg shadow-md">
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose TV Legal Count Section -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-4 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            TẠI SAO HƠN 2.000 DOANH NGHIỆP ĐÃ CHỌN TV LEGAL COUNT ĐỒNG HÀNH?
+          </h2>
+          <p class="text-xl text-gray-600">
+            Chúng tôi cam kết mang lại giá trị vượt trội cho doanh nghiệp của bạn
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            [
+              {
+                title: "ĐỘI NGŨ CHUYÊN GIA",
+                icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+                color: "blue",
+                items: [
+                  "Luật sư có nhiều năm kinh nghiệm",
+                  "Chuyên viên tư vấn tận tâm",
+                  "Am hiểu Luật Đầu tư, Luật Doanh nghiệp",
+                  "Đã tư vấn thành công 2.000+ doanh nghiệp",
+                ],
+              },
+              {
+                title: "BẢNG GIÁ MINH BẠCH",
+                icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+                color: "green",
+                items: [
+                  "Bảng giá dịch vụ minh bạch, rõ ràng",
+                  "Không phát sinh chi phí ẩn",
+                  "Tư vấn miễn phí 100% các vấn đề pháp lý",
+                ],
+              },
+              {
+                title: "QUY TRÌNH DỊCH VỤ",
+                icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+                color: "red",
+                items: [
+                  "Tiếp nhận yêu cầu trong vòng 15 phút",
+                  "Tư vấn chi tiết, báo giá rõ ràng",
+                  "Thi hành nhanh chóng, đúng tiến độ",
+                  "Bàn giao hồ sơ đầy đủ, đúng luật",
+                ],
+              },
+              {
+                title: "HỖ TRỢ TRỌN ĐỜI",
+                icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+                color: "pink",
+                items: [
+                  "Hỗ trợ, tư vấn miễn phí trọn đời",
+                  "Giải đáp mọi thắc mắc pháp lý",
+                  "Hỗ trợ tiếp đoàn thẩm định",
+                  "Đồng hành cùng doanh nghiệp phát triển",
+                ],
+              },
+            ].map((feature) => (
+              <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-4">
+                  <div
+                    class={`w-12 h-12 bg-${feature.color}-100 rounded-lg flex items-center justify-center flex-shrink-0`}
+                  >
+                    <svg
+                      class={`w-6 h-6 text-${feature.color}-600`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d={feature.icon}
+                      />
+                    </svg>
+                  </div>
+                  <h3 class={`text-xl font-bold text-${feature.color}-600`}>{feature.title}</h3>
+                </div>
+                <ul class="space-y-2">
+                  {feature.items.map((item) => (
+                    <li class="flex items-start">
+                      <svg
+                        class="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span class="text-gray-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Câu hỏi thường gặp</h2>
+          <p class="text-xl text-gray-600">Giải đáp thắc mắc của quý khách hàng</p>
+        </div>
+
+        <div class="space-y-4">
+          {
+            faqs.map((faq, index) => (
+              <details class="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden group">
+                <summary class="p-3 md:p-6 cursor-pointer flex items-center justify-between hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                  <svg
+                    class="w-5 h-5 text-gray-500 flex-shrink-0 group-open:rotate-180 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </summary>
+                <div class="px-3 md:px-6 pb-3 md:pb-6 border-t border-gray-200 pt-4">
+                  <p class="text-gray-700">{faq.answer}</p>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-8 md:py-16 bg-blue-700 text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Bạn cần tư vấn thêm?</h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Liên hệ ngay với chúng tôi để được tư vấn chi tiết về thủ tục điều chỉnh IRC
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={getFullPath("/lien-he")}
+            class="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200 inline-block"
+          >
+            Gửi yêu cầu tư vấn
+          </a>
+          <a
+            href={getFullPath("/dich-vu/dieu-chinh-giay-chung-nhan-dang-ky-dau-tu")}
+            class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition-colors duration-200 inline-block"
+          >
+            Xem dịch vụ khác
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

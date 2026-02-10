@@ -4,10 +4,6 @@ import { getNavWithBase, getFullPath } from "../../utils/url";
 
 const currentYear = new Date().getFullYear();
 
-const logoLetter = companyInfo.name.charAt(0);
-
-const primaryBg600 = "bg-blue-700";
-
 // Get nav links with base prefix
 const navLinksWithBase = getNavWithBase(navLinks);
 
@@ -25,9 +21,7 @@ const services = [
       <!-- Company Info -->
       <div class="col-span-1">
         <div class="flex items-center space-x-2 mb-4">
-          <div class={`w-8 h-8 ${primaryBg600} rounded-lg flex items-center justify-center`}>
-            <span class="text-white font-bold text-lg">{logoLetter}</span>
-          </div>
+          <img src={getFullPath("/logo.svg")} alt="TV Legal Count Logo" class="h-8 w-auto" />
           <span class="text-xl font-bold">{companyInfo.name}</span>
         </div>
         <p class="text-gray-400 text-sm mb-4">

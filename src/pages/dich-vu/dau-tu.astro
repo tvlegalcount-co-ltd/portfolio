@@ -1,5 +1,6 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
+import { getFullPath } from "../../utils/url";
 
 const page = {
   title: "Dịch vụ Đầu tư",
@@ -9,11 +10,10 @@ const page = {
 
 const services = [
   {
-    title: "Giấy chứng nhận đăng ký đầu tư",
-    description: "Tư vấn xin cấp Giấy chứng nhận đăng ký đầu tư cho nhà đầu tư nước ngoài",
-    icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
-    price: "Liên hệ",
-    href: "#",
+    title: "Thành lập Doanh nghiệp vốn đầu tư nước ngoài",
+    description: "Tư vấn thành lập doanh nghiệp có vốn đầu tư nước ngoài tại Việt Nam",
+    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    href: "/dich-vu/thanh-lap-doanh-nghiep-von-dau-tu-nuoc-ngoai",
     color: "blue",
     colorClass: "from-blue-700 to-blue-800",
     bgColorClass: "bg-blue-100",
@@ -23,33 +23,31 @@ const services = [
       "Chuẩn bị hồ sơ pháp lý nhà đầu tư",
       "Xin chấp thuận chủ trương đầu tư (nếu có)",
       "Cấp Giấy chứng nhận đăng ký đầu tư",
-      "Tư vấn ưu đãi đầu tư",
+      "Thành lập doanh nghiệp FDI",
     ],
   },
   {
-    title: "Chuyển nhượng vốn",
-    description: "Tư vấn thủ tục chuyển nhượng vốn, góp vốn, mua cổ phần cho nhà đầu tư",
-    icon: "M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4",
-    price: "Liên hệ",
-    href: "#",
+    title: "Nhà đầu tư nước ngoài góp vốn",
+    description: "Thủ tục góp vốn, mua cổ phần của nhà đầu tư nước ngoài vào doanh nghiệp Việt Nam",
+    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    href: "/dich-vu/nha-dau-tu-nuoc-ngoai-gop-von",
     color: "purple",
     colorClass: "from-purple-600 to-purple-800",
     bgColorClass: "bg-purple-100",
     textColorClass: "text-purple-600",
     features: [
-      "Thuê, mua lại doanh nghiệp",
+      "Góp vốn thành lập doanh nghiệp",
       "Chuyển nhượng vốn điều lệ",
-      "Góp vốn mua cổ phần",
-      "Thu hồi vốn đầu tư",
-      "Tư vấn giá và thủ tục",
+      "Mua cổ phần doanh nghiệp",
+      "Tăng vốn đầu tư",
+      "Tư vấn thuế chuyển nhượng",
     ],
   },
   {
-    title: "Văn phòng đại diện",
-    description: "Thành lập văn phòng đại diện cho công ty nước ngoài tại Việt Nam",
+    title: "Thành lập Chi nhánh/VPĐD nước ngoài",
+    description: "Thành lập Chi nhánh/Văn phòng đại diện cho doanh nghiệp nước ngoài tại Việt Nam",
     icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
-    price: "Từ 3.000.000 đồng",
-    href: "#",
+    href: "/dich-vu/thanh-lap-chi-nhanh-vpdd-nuoc-ngoai",
     color: "green",
     colorClass: "from-green-600 to-green-800",
     bgColorClass: "bg-green-100",
@@ -63,39 +61,54 @@ const services = [
     ],
   },
   {
-    title: "Chi nhánh công ty nước ngoài",
-    description: "Thành lập chi nhánh cho doanh nghiệp nước ngoài tại Việt Nam",
-    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-    price: "Liên hệ",
-    href: "#",
+    title: "Điều chỉnh Giấy chứng nhận đăng ký đầu tư",
+    description: "Thủ tục điều chỉnh, thay đổi nội dung Giấy chứng nhận đăng ký đầu tư (IRC)",
+    icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+    href: "/dich-vu/dieu-chinh-giay-chung-nhan-dang-ky-dau-tu",
     color: "indigo",
     colorClass: "from-indigo-600 to-indigo-800",
     bgColorClass: "bg-indigo-100",
     textColorClass: "text-indigo-600",
     features: [
-      "Giấy phép thành lập chi nhánh",
-      "Dăng ký hoạt động chi nhánh",
-      "Đăng ký thuế và hóa đơn",
-      "Tư vấn hoạt động chi nhánh",
-      "Quản lý chi nhánh",
+      "Điều chỉnh thông tin nhà đầu tư",
+      "Điều chỉnh vốn đầu tư",
+      "Điều chỉnh thời hạn dự án",
+      "Điều chỉnh ngành nghề kinh doanh",
+      "Cấp lại IRC",
     ],
   },
   {
-    title: "Dự án đầu tư",
-    description: "Tư vấn thực hiện dự án đầu tư tại Việt Nam",
-    icon: "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z",
-    price: "Liên hệ",
-    href: "#",
-    color: "yellow",
-    colorClass: "from-yellow-500 to-yellow-700",
-    bgColorClass: "bg-yellow-100",
-    textColorClass: "text-yellow-600",
+    title: "Giải thể Doanh nghiệp FDI",
+    description: "Thủ tục giải thể doanh nghiệp có vốn đầu tư nước ngoài tại Việt Nam",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+    href: "/dich-vu/giai-the-doanh-nghiep-von-dau-tu-nuoc-ngoai",
+    color: "red",
+    colorClass: "from-red-600 to-red-800",
+    bgColorClass: "bg-red-100",
+    textColorClass: "text-red-600",
     features: [
-      "Tư vấn chủ trương đầu tư",
-      "Giấy chứng nhận đăng ký đầu tư",
-      "Thẩm định giá trị dự án",
-      "Quy trình thực hiện dự án",
-      "Hỗ trợ thực hiện dự án",
+      "Tư vấn điều kiện giải thể",
+      "Hoàn thành nghĩa vụ thuế",
+      "Xử lý nợ và tài sản",
+      "Thu hồi giấy phép đầu tư",
+      "Chuyển vốn ra nước ngoài",
+    ],
+  },
+  {
+    title: "Giải thể Chi nhánh/VPĐD nước ngoài",
+    description: "Thủ tục giải thể Chi nhánh/Văn phòng đại diện của doanh nghiệp nước ngoài",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+    href: "/dich-vu/giai-the-chi-nhanh-vpdd-thuong-nhan-nuoc-ngoai",
+    color: "gray",
+    colorClass: "from-gray-600 to-gray-800",
+    bgColorClass: "bg-gray-100",
+    textColorClass: "text-gray-600",
+    features: [
+      "Tư vấn điều kiện giải thể",
+      "Hoàn thành nghĩa vụ thuế",
+      "Xử lý tài sản và lao động",
+      "Thu hồi giấy phép",
+      "Đóng cửa Chi nhánh/VPĐD",
     ],
   },
 ];
@@ -105,7 +118,7 @@ const services = [
   title={page.title}
   icon={page.icon}
   description={page.description}
-  showPricing={false}
+ 
   heroBackground="/hero-service.jpg"
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -146,7 +159,7 @@ const services = [
               </div>
 
               <div class="p-6">
-                <ul class="space-y-3 mb-6">
+                <ul class="space-y-3 mb-4 md:mb-6">
                   {service.features.map((feature) => (
                     <li class="flex items-start">
                       <svg
@@ -167,14 +180,10 @@ const services = [
                   ))}
                 </ul>
 
-                <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-200">
-                  <div>
-                    <div class="text-sm text-gray-500">Chi phí từ</div>
-                    <div class="text-lg font-bold text-gray-900">{service.price}</div>
-                  </div>
+                <div class="mt-6 pt-6 border-t border-gray-200">
                   <a
-                    href={service.href}
-                    class="inline-flex items-center px-4 py-2 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 text-sm"
+                    href={getFullPath(service.href)}
+                    class="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 text-sm"
                   >
                     Xem chi tiết
                   </a>

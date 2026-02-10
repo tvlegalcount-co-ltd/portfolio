@@ -1,0 +1,23 @@
+{
+  "name": "TV Legal Count",
+  "short_name": "TV Legal",
+  "description": "Dịch vụ tư vấn pháp lý, thành lập doanh nghiệp, kế toán thuế trọn gói và chuyên nghiệp",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,595 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import { getFullPath } from "../../utils/url";
+
+const service = {
+  id: "dissolve-fdi",
+  title: "Giải thể Doanh nghiệp có vốn đầu tư nước ngoài",
+  icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  description: "Thủ tục giải thể doanh nghiệp FDI, chấm dứt hoạt động đầu tư tại Việt Nam",
+};
+
+const reasons = [
+  "Hết thời hạn hoạt động theo Giấy phép đầu tư",
+  "Không thể tiếp tục hoạt động do khó khăn tài chính",
+  "Không đạt mục tiêu kinh doanh",
+  "Nhà đầu tư nước ngoài rút vốn",
+  "Vi phạm pháp luật nghiêm trọng bị thu hồi giấy phép",
+  "Các lý do khác theo quy định pháp luật",
+];
+
+const conditions = [
+  "Hoàn thành nghĩa vụ thuế và các khoản nợ khác",
+  "Không đang trong quá trình giải quyết tranh chấp tại cơ quan tài phán",
+  "Không đang trong quá trình giải quyết thủ tục giải quyết việc làm, tiền lương",
+  "Có quyết định chính thức về việc giải thể của chủ doanh nghiệp",
+];
+
+const documents = [
+  "Quyết định về việc giải thể doanh nghiệp của chủ đầu tư",
+  "Báo cáo tài chính qua các năm đã kê khai và quyết toán thuế",
+  "Giấy xác nhận của cơ quan thuế về việc hoàn thành nghĩa vụ thuế",
+  "Giấy xác nhận của cơ quan Bảo hiểm xã hội",
+  "Giấy chứng nhận đăng ký đầu tư (bản chính)",
+  "Danh sách chủ nợ và phương án trả nợ",
+  "Thông báo giải thể đã đăng công báo",
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Tư vấn và Lập phương án",
+    description: "Tư vấn điều kiện giải thể, lập phương án giải thể và xử lý nghĩa vụ",
+  },
+  {
+    step: "02",
+    title: "Quyết định giải thể",
+    description: "Ban hành quyết định giải thể và thông báo cho cơ quan đăng ký kinh doanh",
+  },
+  {
+    step: "03",
+    title: "Hoàn thành nghĩa vụ",
+    description: "Thanh toán nợ, hoàn thành nghĩa vụ thuế, BHXH, trả lương người lao động",
+  },
+  {
+    step: "04",
+    title: "Xác nhận hoàn thành",
+    description: "Nhận xác nhận hoàn thành nghĩa vụ từ cơ quan thuế, BHXH",
+  },
+  {
+    step: "05",
+    title: "Thu hồi IRC",
+    description: "Thủ tục thu hồi Giấy chứng nhận đăng ký đầu tư",
+  },
+  {
+    step: "06",
+    title: "Đăng báo và chấm dứt",
+    description: "Đăng thông báo giải thể công báo, chấm dứt hoạt động",
+  },
+];
+
+const timeline = {
+  min: "03-04 tháng",
+  typical: "04-06 tháng",
+  note: "Thời gian thực hiện phụ thuộc vào việc xử lý các nghĩa vụ thuế, nợ và tranh chấp (nếu có)",
+};
+
+const considerations = [
+  {
+    title: "Nghĩa vụ thuế",
+    description: "Phải hoàn thành tất cả nghĩa vụ thuế, bao gồm thuế thu nhập DN, GTGT, TNCN, v.v.",
+  },
+  {
+    title: "Nợ và nghĩa vụ",
+    description: "Phải thanh toán đầy đủ các khoản nợ, lương người lao động, BHXH, BHYT",
+  },
+  {
+    title: "Tranh chấp pháp lý",
+    description: "Không được giải thể khi đang có tranh chấp tại tòa án hoặc trọng tài",
+  },
+  {
+    title: "Xử lý tài sản",
+    description: "Cần có phương án xử lý tài sản, chuyển ngoại tệ ra nước ngoài (nếu có)",
+  },
+];
+
+const faqs = [
+  {
+    question: "Giải thể doanh nghiệp FDI mất bao lâu?",
+    answer: "Thời gian giải thể doanh nghiệp FDI thường từ 4-6 tháng, bao gồm thời gian xử lý nghĩa vụ thuế (khoảng 2-3 tháng), thời gian đăng công báo (30 ngày) và thời gian cơ quan nhà nước xử lý hồ sơ.",
+  },
+  {
+    question: "Chi phí giải thể bao gồm những gì?",
+    answer: "Chi phí bao gồm: phí công bố thông tin giải thể (trên công báo), phí dịch vụ luật sư, chi phí kiểm toán (nếu có), và các khoản nợ/thuế cần thanh toán.",
+  },
+  {
+    question: "Nhà đầu tư nước ngoài có thể chuyển tiền ra nước ngoài sau giải thể không?",
+    answer: "Có. Sau khi hoàn thành nghĩa vụ thuế tại Việt Nam, nhà đầu tư được phép chuyển phần vốn còn lại và lợi nhuận hợp pháp về nước. Cần chứng minh nguồn tiền hợp lệ và tuân thủ quy định ngoại hối.",
+  },
+  {
+    question: "Giải thể khác với phá sản như thế nào?",
+    answer: "Giải thể là chấm dứt hoạt động doanh nghiệp một cách tự nguyện khi hết thời hạn hoạt động hoặc không muốn tiếp tục kinh doanh. Phá sản là tình trạng doanh nghiệp mất khả năng thanh toán nợ và được tòa án tuyên bố.",
+  },
+];
+---
+
+<PageLayout
+  title={service.title}
+  icon={service.icon}
+  description={service.description}
+  heroBackground="/hero-service.jpg"
+>
+  <!-- Introduction -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            Tổng quan về Dịch vụ
+          </h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-4">
+            Giải thể doanh nghiệp có vốn đầu tư nước ngoài là quy trình pháp lý phức tạp, đòi hỏi sự tuân thủ chặt chẽ các quy định về thuế, lao động, và các nghĩa vụ khác. Doanh nghiệp phải hoàn thành tất cả nghĩa vụ trước khi được phép chấm dứt hoạt động.
+          </p>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            TV Legal Count cung cấp dịch vụ tư vấn và thực hiện thủ tục giải thể doanh nghiệp FDI toàn diện, đảm bảo tuân thủ đúng quy định pháp luật và giảm thiểu rủi ro cho nhà đầu tư nước ngoài.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reasons -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            Các lý do giải thể
+          </h2>
+          <ul class="space-y-4">
+            {
+              reasons.map((item) => (
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span class="text-gray-700 text-lg">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            Thời gian thực hiện
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-700 mb-2">{timeline.min}</div>
+              <div class="text-gray-600">Nhanh nhất</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-700 mb-2">{timeline.typical}</div>
+              <div class="text-gray-600">Thông thường</div>
+            </div>
+            <div class="text-left">
+              <p class="text-gray-700">{timeline.note}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conditions -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            Điều kiện giải thể
+          </h2>
+          <ul class="space-y-4">
+            {
+              conditions.map((item) => (
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mt-0.5 mr-4 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span class="text-gray-700 text-lg">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents Required -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            Hồ sơ cần chuẩn bị
+          </h2>
+          <ul class="space-y-4">
+            {
+              documents.map((item) => (
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span class="text-gray-700 text-lg">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-4 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            QUY TRÌNH 5 BƯỚC GIẢI THỂ DOANH NGHIỆP FDI
+          </h2>
+          <p class="text-xl text-gray-600">
+            Chúng tôi cam kết quy trình nhanh chóng, chuyên nghiệp
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          {
+            process.map((item, index) => (
+              <div class="flex gap-6 items-start">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                  {index + 1}
+                </div>
+                <div class="flex-1 bg-white p-6 rounded-lg shadow-md">
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose TV Legal Count Section -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-4 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            TẠI SAO HƠN 2.000 DOANH NGHIỆP ĐÃ CHỌN TV LEGAL COUNT ĐỒNG HÀNH?
+          </h2>
+          <p class="text-xl text-gray-600">
+            Chúng tôi cam kết mang lại giá trị vượt trội cho doanh nghiệp của bạn
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            [
+              {
+                title: "ĐỘI NGŨ CHUYÊN GIA",
+                icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+                color: "blue",
+                items: [
+                  "Luật sư có nhiều năm kinh nghiệm",
+                  "Chuyên viên tư vấn tận tâm",
+                  "Am hiểu Luật Đầu tư, Luật Doanh nghiệp",
+                  "Đã tư vấn thành công 2.000+ doanh nghiệp",
+                ],
+              },
+              {
+                title: "BẢNG GIÁ MINH BẠCH",
+                icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+                color: "green",
+                items: [
+                  "Bảng giá dịch vụ minh bạch, rõ ràng",
+                  "Không phát sinh chi phí ẩn",
+                  "Tư vấn miễn phí 100% các vấn đề pháp lý",
+                ],
+              },
+              {
+                title: "QUY TRÌNH DỊCH VỤ",
+                icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+                color: "red",
+                items: [
+                  "Tiếp nhận yêu cầu trong vòng 15 phút",
+                  "Tư vấn chi tiết, báo giá rõ ràng",
+                  "Thi hành nhanh chóng, đúng tiến độ",
+                  "Bàn giao hồ sơ đầy đủ, đúng luật",
+                ],
+              },
+              {
+                title: "HỖ TRỢ TRỌN ĐỜI",
+                icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+                color: "pink",
+                items: [
+                  "Hỗ trợ, tư vấn miễn phí trọn đời",
+                  "Giải đáp mọi thắc mắc pháp lý",
+                  "Hỗ trợ tiếp đoàn thẩm định",
+                  "Đồng hành cùng doanh nghiệp phát triển",
+                ],
+              },
+            ].map((feature) => (
+              <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-4">
+                  <div
+                    class={`w-12 h-12 bg-${feature.color}-100 rounded-lg flex items-center justify-center flex-shrink-0`}
+                  >
+                    <svg
+                      class={`w-6 h-6 text-${feature.color}-600`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d={feature.icon}
+                      />
+                    </svg>
+                  </div>
+                  <h3 class={`text-xl font-bold text-${feature.color}-600`}>{feature.title}</h3>
+                </div>
+                <ul class="space-y-2">
+                  {feature.items.map((item) => (
+                    <li class="flex items-start">
+                      <svg
+                        class="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span class="text-gray-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Considerations -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Lưu ý quan trọng</h2>
+          <p class="text-xl text-gray-600">Các vấn đề cần xem xét khi giải thể</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {
+            considerations.map((item) => (
+              <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+                <div class="flex items-start gap-4">
+                  <div class="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                    <svg
+                      class="w-6 h-6 text-yellow-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                    <p class="text-gray-600">{item.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Câu hỏi thường gặp</h2>
+          <p class="text-xl text-gray-600">Giải đáp thắc mắc của quý khách hàng</p>
+        </div>
+
+        <div class="space-y-4">
+          {
+            faqs.map((faq, index) => (
+              <details class="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden group">
+                <summary class="p-3 md:p-6 cursor-pointer flex items-center justify-between hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                  <svg
+                    class="w-5 h-5 text-gray-500 flex-shrink-0 group-open:rotate-180 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </summary>
+                <div class="px-3 md:px-6 pb-3 md:pb-6 border-t border-gray-200 pt-4">
+                  <p class="text-gray-700">{faq.answer}</p>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-8 md:py-16 bg-blue-700 text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Bạn cần tư vấn thêm?</h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Liên hệ ngay với chúng tôi để được tư vấn chi tiết về thủ tục giải thể doanh nghiệp FDI
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={getFullPath("/lien-he")}
+            class="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200 inline-block"
+          >
+            Gửi yêu cầu tư vấn
+          </a>
+          <a
+            href={getFullPath("/dich-vu/giai-the-doanh-nghiep-von-dau-tu-nuoc-ngoai")}
+            class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition-colors duration-200 inline-block"
+          >
+            Xem dịch vụ khác
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

@@ -6,9 +6,6 @@ const service = {
   title: "Thành lập doanh nghiệp vốn Việt Nam",
   icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
   description: "Hãy để chúng tôi là cánh tay đắc lực hỗ trợ bạn!",
-  price: "2.900.000 đồng",
-  totalPrice: "3.900.000 – 7.900.000 đồng",
-  timeframe: "3 đến 5 ngày làm việc",
   whatYouProvide: [
     "Bản sao y CCCD/CMND/Hộ chiếu của chủ sở hữu/thành viên góp vốn/cổ đông/Người đại diện pháp luật",
     "Các thông tin cần cung cấp về doanh nghiệp mới: Tên công ty, địa chỉ công ty, ngành nghề kinh doanh… (Luật sư sẽ tư vấn chi tiết)",
@@ -41,18 +38,18 @@ const service = {
   title={service.title}
   icon={service.icon}
   description={service.description}
-  price={service.price}
-  totalPrice={service.totalPrice}
-  timeframe={service.timeframe}
-  showPricing={true}
+ }
+ }
+ }
+ 
   heroBackground="/hero-service.jpg"
 >
   <!-- What You Provide Section -->
-  <section class="py-16">
+  <section class="py-8 md:py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
                 class="w-6 h-6 text-blue-700"
@@ -98,11 +95,11 @@ const service = {
   </section>
 
   <!-- What You Receive Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-8 md:py-16 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
             <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
               <svg
                 class="w-6 h-6 text-green-600"
@@ -147,11 +144,11 @@ const service = {
   </section>
 
   <!-- Consulting Section -->
-  <section class="py-16">
+  <section class="py-8 md:py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
             <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
               <svg
                 class="w-6 h-6 text-purple-600"
@@ -197,10 +194,10 @@ const service = {
   </section>
 
   <!-- Why Choose Us Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-8 md:py-16 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">
             TẠI SAO THÀNH LẬP DOANH NGHIỆP MỚI CẦN THUÊ CÔNG TY UY TÍN?
           </h2>
@@ -234,10 +231,10 @@ const service = {
   </section>
 
   <!-- Why Choose TV Legal Count Section -->
-  <section class="py-16">
+  <section class="py-8 md:py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">
             TẠI SAO HƠN 2.000 DOANH NGHIỆP ĐÃ CHỌN TV LEGAL COUNT ĐỒNG HÀNH?
           </h2>
@@ -317,7 +314,7 @@ const service = {
               },
             ].map((feature) => (
               <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6">
-                <div class="flex items-center gap-3 mb-4">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-4">
                   <div
                     class={`w-12 h-12 bg-${feature.color}-100 rounded-lg flex items-center justify-center flex-shrink-0`}
                   >
@@ -366,10 +363,10 @@ const service = {
   </section>
 
   <!-- Process Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-8 md:py-16 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">
             QUY TRÌNH 5 BƯỚC THÀNH LẬP DOANH NGHIỆP
           </h2>
@@ -424,10 +421,10 @@ const service = {
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-8 md:py-16 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-4 md:mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">MỘT SỐ CÂU HỎI THƯỜNG GẶP</h2>
           <p class="text-xl text-gray-600">
             Giải đáp những thắc mắc phổ biến về thành lập doanh nghiệp
@@ -460,7 +457,7 @@ const service = {
             ].map((faq) => (
               <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
                 <details class="group">
-                  <summary class="flex items-center justify-between p-6 cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                  <summary class="flex items-center justify-between p-3 md:p-6 cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                     <h3 class="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
                     <svg
                       class="w-6 h-6 text-gray-500 transform group-open:rotate-180 transition-transform duration-200 flex-shrink-0"
@@ -476,7 +473,7 @@ const service = {
                       />
                     </svg>
                   </summary>
-                  <div class="p-6 border-t border-gray-200">
+                  <div class="p-3 md:p-6 border-t border-gray-200">
                     <div class="prose prose-sm max-w-none text-gray-700" set:html={faq.a} />
                   </div>
                 </details>

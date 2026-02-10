@@ -82,7 +82,36 @@ export const navLinks = [
       { name: "Rà soát & Xây dựng Hợp đồng", href: "/dich-vu/ra-soat-xay-dung-hop-dong" },
     ],
   },
-  { name: "Đầu tư", href: "/dich-vu/dau-tu" },
+  {
+    name: "Đầu tư",
+    href: "/dich-vu/dau-tu",
+    children: [
+      {
+        name: "Thành lập Doanh nghiệp vốn đầu tư nước ngoài",
+        href: "/dich-vu/thanh-lap-doanh-nghiep-von-dau-tu-nuoc-ngoai",
+      },
+      {
+        name: "Thành lập Chi nhánh/VPĐD nước ngoài",
+        href: "/dich-vu/thanh-lap-chi-nhanh-vpdd-nuoc-ngoai",
+      },
+      {
+        name: "Điều chỉnh Giấy chứng nhận đăng ký đầu tư",
+        href: "/dich-vu/dieu-chinh-giay-chung-nhan-dang-ky-dau-tu",
+      },
+      {
+        name: "Nhà đầu tư nước ngoài góp vốn",
+        href: "/dich-vu/nha-dau-tu-nuoc-ngoai-gop-von",
+      },
+      {
+        name: "Giải thể Doanh nghiệp có vốn đầu tư nước ngoài",
+        href: "/dich-vu/giai-the-doanh-nghiep-von-dau-tu-nuoc-ngoai",
+      },
+      {
+        name: "Giải thể Chi nhánh/VPĐD của thương nhân nước ngoài",
+        href: "/dich-vu/giai-the-chi-nhanh-vpdd-thuong-nhan-nuoc-ngoai",
+      },
+    ],
+  },
   { name: "Thuế & Kế toán", href: "/dich-vu/thue-ke-toan" },
   { name: "Tư vấn pháp lý", href: "/dich-vu/tu-van-phap-ly" },
   { name: "Giấy phép", href: "/dich-vu/giay-phep" },

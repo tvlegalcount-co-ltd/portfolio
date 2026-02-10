@@ -1,0 +1,442 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import { getFullPath } from "../../utils/url";
+
+const service = {
+  id: "fdi-company",
+  title: "Thành lập Doanh nghiệp vốn đầu tư nước ngoài",
+  icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+  description: "Tư vấn thành lập doanh nghiệp có vốn đầu tư nước ngoài tại Việt Nam",
+};
+
+const conditions = [
+  "Có dự án đầu tư tại Việt Nam",
+  "Có hồ sơ pháp lý hợp lệ của nhà đầu tư nước ngoài",
+  "Đáp ứng điều kiện về vốn đầu tư theo quy định pháp luật",
+  "Có địa điểm đặt văn phòng kinh doanh tại Việt Nam",
+  "Tuân thủ các quy định về ngành nghề kinh doanh có điều kiện (nếu có)",
+];
+
+const documents = [
+  "Giấy tờ pháp lý của nhà đầu tư (Đăng ký kinh doanh, Passport, v.v.)",
+  "Dự án đầu tư hoặc báo cáo tài chính khả thi",
+  "Đề xuất về vốn điều lệ và cơ cấu tổ chức",
+  "Giấy tờ chứng minh năng lực tài chính",
+  "Hồ sơ về địa chỉ trụ sở doanh nghiệp",
+  "Giấy tờ khác theo quy định pháp luật",
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Tư vấn và Chuẩn bị",
+    description: "Tư vấn điều kiện đầu tư, loại hình doanh nghiệp, chuẩn bị hồ sơ pháp lý",
+  },
+  {
+    step: "02",
+    title: "Xin chấp thuận chủ trương",
+    description: "Xin chấp thuận chủ trương đầu tư (nếu thuộc trường hợp phải xin)",
+  },
+  {
+    step: "03",
+    title: "Cấp IRC",
+    description: "Xin cấp Giấy chứng nhận đăng ký đầu tư",
+  },
+  {
+    step: "04",
+    title: "Thành lập doanh nghiệp",
+    description: "Thủ tục đăng ký doanh nghiệp và các giấy tờ liên quan",
+  },
+  {
+    step: "05",
+    title: "Hậu thành lập",
+    description: "Khấu trừ dấu, chữ ký số, mở tài khoản ngân hàng, đăng ký thuế",
+  },
+];
+
+const benefits = [
+  {
+    title: "Hiểu rõ pháp luật",
+    description: "Tư vấn chi tiết về Luật Đầu tư, Luật Doanh nghiệp liên quan đến vốn nước ngoài",
+  },
+  {
+    title: "Tối ưu thủ tục",
+    description: "Giảm thiểu thời gian và chi phí thực hiện thủ tục hành chính",
+  },
+  {
+    title: "Tránh rủi ro pháp lý",
+    description: "Đảm bảo tuân thủ đúng quy định pháp luật Việt Nam",
+  },
+  {
+    title: "Hỗ trợ trọn đời",
+    description: "Tư vấn miễn phí các vấn đề pháp lý phát sinh sau thành lập",
+  },
+];
+
+const faqs = [
+  {
+    question: "Thời gian thành lập doanh nghiệp FDI mất bao lâu?",
+    answer: "Thời gian xin cấp Giấy chứng nhận đăng ký đầu tư thường từ 15-30 ngày làm việc. Sau đó, thời gian thành lập doanh nghiệp khoảng 3-5 ngày làm việc. Tổng thời gian khoảng 20-35 ngày làm việc.",
+  },
+  {
+    question: "Vốn đầu tư tối thiểu là bao nhiêu?",
+    answer: "Theo quy định hiện hành, không có mức vốn tối thiểu chung cho tất cả các ngành. Tuy nhiên, một số ngành nghề đặc thù có yêu cầu về vốn pháp định hoặc vốn tối thiểu. Cần kiểm tra theo từng ngành cụ thể.",
+  },
+  {
+    question: "Nhà đầu tư nước ngoài có thể sở hữu 100% vốn không?",
+    answer: "Có, trừ một số ngành nghề có điều kiện hạn chế tỷ lệ sở hữu nước ngoài theo quy định pháp luật (ví dụ: dịch vụ viễn thông, vận tải biển, xuất bản, v.v.)",
+  },
+  {
+    question: "Những ngành nghề nào hạn chế đầu tư nước ngoài?",
+    answer: "Cần kiểm tra theo danh sách ngành nghề có điều kiện Market Access (điều kiện tiếp cận thị trường) và các quy định về tỷ lệ sở hữu nước ngoài trong Luật Đầu tư và các luật chuyên ngành.",
+  },
+];
+---
+
+<PageLayout
+  title={service.title}
+  icon={service.icon}
+  description={service.description}
+  heroBackground="/hero-service.jpg"
+>
+  <!-- Introduction -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            Tổng quan về Dịch vụ
+          </h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-4">
+            Dịch vụ thành lập doanh nghiệp có vốn đầu tư nước ngoài (FDI) tại Việt Nam đòi hỏi sự hiểu biết sâu sắc về Luật Đầu tư, Luật Doanh nghiệp và các quy định pháp luật liên quan. TV Legal Count cung cấp dịch vụ tư vấn chuyên nghiệp, toàn diện cho nhà đầu tư nước ngoài muốn thành lập doanh nghiệp tại Việt Nam.
+          </p>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Chúng tôi hỗ trợ từ khâu lập dự án đầu tư, xin cấp Giấy chứng nhận đăng ký đầu tư (IRC) đến thành lập doanh nghiệp và hoàn thiện các thủ tục hậu thành lập.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conditions -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            Điều kiện thành lập doanh nghiệp FDI
+          </h2>
+          <ul class="space-y-4">
+            {
+              conditions.map((item) => (
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-green-500 mt-0.5 mr-4 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span class="text-gray-700 text-lg">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents Required -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg
+                class="w-6 h-6 text-blue-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            Hồ sơ cần chuẩn bị
+          </h2>
+          <ul class="space-y-4">
+            {
+              documents.map((item) => (
+                <li class="flex items-start">
+                  <svg
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span class="text-gray-700 text-lg">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-8 md:py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-4 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            QUY TRÌNH 5 BƯỚC THÀNH LẬP DOANH NGHIỆP FDI
+          </h2>
+          <p class="text-xl text-gray-600">
+            Chúng tôi cam kết quy trình nhanh chóng, chuyên nghiệp
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          {
+            process.map((item, index) => (
+              <div class="flex gap-6 items-start">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                  {index + 1}
+                </div>
+                <div class="flex-1 bg-white p-6 rounded-lg shadow-md">
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose TV Legal Count Section -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-4 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            TẠI SAO HƠN 2.000 DOANH NGHIỆP ĐÃ CHỌN TV LEGAL COUNT ĐỒNG HÀNH?
+          </h2>
+          <p class="text-xl text-gray-600">
+            Chúng tôi cam kết mang lại giá trị vượt trội cho doanh nghiệp của bạn
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            [
+              {
+                title: "ĐỘI NGŨ CHUYÊN GIA",
+                icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+                color: "blue",
+                items: [
+                  "Luật sư có nhiều năm kinh nghiệm",
+                  "Chuyên viên tư vấn tận tâm",
+                  "Am hiểu Luật Đầu tư, Luật Doanh nghiệp",
+                  "Đã tư vấn thành công 2.000+ doanh nghiệp",
+                ],
+              },
+              {
+                title: "BẢNG GIÁ MINH BẠCH",
+                icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+                color: "green",
+                items: [
+                  "Bảng giá dịch vụ minh bạch, rõ ràng",
+                  "Không phát sinh chi phí ẩn",
+                  "Tư vấn miễn phí 100% các vấn đề pháp lý",
+                ],
+              },
+              {
+                title: "QUY TRÌNH DỊCH VỤ",
+                icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+                color: "red",
+                items: [
+                  "Tiếp nhận yêu cầu trong vòng 15 phút",
+                  "Tư vấn chi tiết, báo giá rõ ràng",
+                  "Thi hành nhanh chóng, đúng tiến độ",
+                  "Bàn giao hồ sơ đầy đủ, đúng luật",
+                ],
+              },
+              {
+                title: "HỖ TRỢ TRỌN ĐỜI",
+                icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+                color: "pink",
+                items: [
+                  "Hỗ trợ, tư vấn miễn phí trọn đời",
+                  "Giải đáp mọi thắc mắc pháp lý",
+                  "Hỗ trợ tiếp đoàn thẩm định",
+                  "Đồng hành cùng doanh nghiệp phát triển",
+                ],
+              },
+            ].map((feature) => (
+              <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-4">
+                  <div
+                    class={`w-12 h-12 bg-${feature.color}-100 rounded-lg flex items-center justify-center flex-shrink-0`}
+                  >
+                    <svg
+                      class={`w-6 h-6 text-${feature.color}-600`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d={feature.icon}
+                      />
+                    </svg>
+                  </div>
+                  <h3 class={`text-xl font-bold text-${feature.color}-600`}>{feature.title}</h3>
+                </div>
+                <ul class="space-y-2">
+                  {feature.items.map((item) => (
+                    <li class="flex items-start">
+                      <svg
+                        class="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span class="text-gray-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-8 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8 md:mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Câu hỏi thường gặp</h2>
+          <p class="text-xl text-gray-600">Giải đáp thắc mắc của quý khách hàng</p>
+        </div>
+
+        <div class="space-y-4">
+          {
+            faqs.map((faq, index) => (
+              <details class="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden group">
+                <summary class="p-3 md:p-6 cursor-pointer flex items-center justify-between hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900 pr-4">{faq.question}</span>
+                  <svg
+                    class="w-5 h-5 text-gray-500 flex-shrink-0 group-open:rotate-180 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </summary>
+                <div class="px-3 md:px-6 pb-3 md:pb-6 border-t border-gray-200 pt-4">
+                  <p class="text-gray-700">{faq.answer}</p>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-8 md:py-16 bg-blue-700 text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Bạn cần tư vấn thêm?</h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Liên hệ ngay với chúng tôi để được tư vấn chi tiết về thủ tục thành lập doanh nghiệp FDI
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={getFullPath("/lien-he")}
+            class="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200 inline-block"
+          >
+            Gửi yêu cầu tư vấn
+          </a>
+          <a
+            href={getFullPath("/dich-vu/thanh-lap-doanh-nghiep-von-dau-tu-nuoc-ngoai")}
+            class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition-colors duration-200 inline-block"
+          >
+            Xem dịch vụ khác
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
