@@ -37,9 +37,6 @@ const service = {
   title={service.title}
   icon={service.icon}
   description={service.description}
- }
- }
- 
   heroBackground="/hero-service.jpg"
 >
   <!-- What You Provide Section -->
@@ -50,7 +47,7 @@ const service = {
           <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-3">
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
-                class="w-6 h-6 text-blue-700"
+                class="w-6 h-6 text-gray-900"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -70,7 +67,7 @@ const service = {
               service.whatYouProvide.map((item) => (
                 <li class="flex items-start">
                   <svg
-                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
+                    class="w-6 h-6 text-gray-900 mt-0.5 mr-4 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -98,9 +95,9 @@ const service = {
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
           <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-3">
-            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
-                class="w-6 h-6 text-green-600"
+                class="w-6 h-6 text-gray-900"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -119,7 +116,7 @@ const service = {
               service.whatYouReceive.map((item) => (
                 <li class="flex items-start">
                   <svg
-                    class="w-6 h-6 text-green-600 mt-0.5 mr-4 flex-shrink-0"
+                    class="w-6 h-6 text-gray-900 mt-0.5 mr-4 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -147,9 +144,9 @@ const service = {
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
           <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-3">
-            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
-                class="w-6 h-6 text-purple-600"
+                class="w-6 h-6 text-gray-900"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -169,7 +166,7 @@ const service = {
               service.consulting.map((item) => (
                 <li class="flex items-start">
                   <svg
-                    class="w-6 h-6 text-purple-600 mt-0.5 mr-4 flex-shrink-0"
+                    class="w-6 h-6 text-gray-900 mt-0.5 mr-4 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -274,11 +271,9 @@ const service = {
             ].map((feature) => (
               <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-6">
                 <div class="flex items-center gap-3 mb-4">
-                  <div
-                    class={`w-12 h-12 bg-${feature.color}-100 rounded-lg flex items-center justify-center flex-shrink-0`}
-                  >
+                  <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg
-                      class={`w-6 h-6 text-${feature.color}-600`}
+                      class="w-6 h-6 text-gray-900"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -291,13 +286,13 @@ const service = {
                       />
                     </svg>
                   </div>
-                  <h3 class={`text-xl font-bold text-${feature.color}-600`}>{feature.title}</h3>
+                  <h3 class="text-xl font-bold text-gray-900">{feature.title}</h3>
                 </div>
                 <ul class="space-y-2">
                   {feature.items.map((item) => (
                     <li class="flex items-start">
                       <svg
-                        class="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0"
+                        class="w-5 h-5 text-gray-900 mt-0.5 mr-2 flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

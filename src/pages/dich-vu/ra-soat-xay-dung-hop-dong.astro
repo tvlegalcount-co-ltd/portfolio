@@ -35,9 +35,6 @@ const service = {
   title={service.title}
   icon={service.icon}
   description={service.description}
- }
- }
- 
   heroBackground="/hero-service.jpg"
 >
   <!-- Dịch vụ của chúng tôi -->
@@ -89,7 +86,7 @@ const service = {
               ].map((item) => (
                 <div class="bg-white p-6 rounded-lg border">
                   <svg
-                    class="w-10 h-10 text-blue-700 mb-3"
+                    class="w-10 h-10 text-gray-900 mb-3"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -116,7 +113,9 @@ const service = {
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6">TẠI SAO CẦN RÀ SOÁT HỢP ĐỒNG?</h2>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6">
+            TẠI SAO CẦN RÀ SOÁT HỢP ĐỒNG?
+          </h2>
           <ul class="space-y-4">
             {
               [
@@ -128,7 +127,7 @@ const service = {
               ].map((item) => (
                 <li class="flex items-start">
                   <svg
-                    class="w-6 h-6 text-blue-700 mr-4"
+                    class="w-6 h-6 text-gray-900 mr-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -187,7 +186,10 @@ const service = {
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-4 md:mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">FAQ</h2>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">MỘT SỐ CÂU HỎI THƯỜNG GẶP</h2>
+          <p class="text-xl text-gray-600">
+            Giải đáp những thắc mắc phổ biến về rà soát và soạn thảo hợp đồng
+          </p>
         </div>
         <div class="space-y-4">
           {
@@ -207,7 +209,7 @@ const service = {
             ].map((faq) => (
               <div class="bg-white rounded-lg shadow overflow-hidden">
                 <details class="group">
-                  <summary class="flex justify-between p-3 md:p-6 cursor-pointer bg-gray-50 hover:bg-gray-100">
+                  <summary class="flex justify-between p-3 md:p-6 cursor-pointer hover:bg-gray-100">
                     <h3 class="font-semibold pr-4">{faq.q}</h3>
                     <svg
                       class="w-6 h-6 transform group-open:rotate-180"

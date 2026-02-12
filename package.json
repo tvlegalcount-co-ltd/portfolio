@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,ts,tsx,jsx,astro,css,md,json}\"",
-    "format:check": "prettier --check \"**/*.{js,ts,tsx,jsx,astro,css,md,json}\""
+    "format:check": "prettier --check \"**/*.{js,ts,tsx,jsx,astro,css,md,json}\"",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -23,7 +24,18 @@
     "eslint": "^9.39.2",
     "eslint-plugin-astro": "^1.5.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,jsx,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,md,json}": [
+      "prettier --write"
+    ]
   }
 }

@@ -13,10 +13,7 @@ const services = [
     description: "Tư vấn và làm thủ tục xin visa Việt Nam cho người nước ngoài",
     icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
     href: "#",
-    color: "blue",
-    colorClass: "from-blue-700 to-blue-800",
-    bgColorClass: "bg-blue-100",
-    textColorClass: "text-blue-700",
+
     features: [
       "Visa du lịch (DL)",
       "Visa kinh doanh (DN)",
@@ -31,10 +28,7 @@ const services = [
     description: "Xin cấp giấy phép lao động cho người nước ngoài làm việc tại Việt Nam",
     icon: "M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2",
     href: "#",
-    color: "green",
-    colorClass: "from-green-600 to-green-800",
-    bgColorClass: "bg-green-100",
-    textColorClass: "text-green-600",
+
     features: [
       "Điều kiện cấp giấy phép lao động",
       "Hồ sơ xin cấp GPLĐ",
@@ -48,10 +42,7 @@ const services = [
     description: "Làm thủ tục cấp thẻ tạm trú cho người nước ngoài",
     icon: "M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2",
     href: "#",
-    color: "purple",
-    colorClass: "from-purple-600 to-purple-800",
-    bgColorClass: "bg-purple-100",
-    textColorClass: "text-purple-600",
+
     features: [
       "Thẻ tạm trú 2 năm",
       "Thẻ tạm trú cho người lao động",
@@ -65,10 +56,7 @@ const services = [
     description: "Các thủ tục liên quan đến xuất nhập cảnh cho người nước ngoài",
     icon: "M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4",
     href: "#",
-    color: "indigo",
-    colorClass: "from-indigo-600 to-indigo-800",
-    bgColorClass: "bg-indigo-100",
-    textColorClass: "text-indigo-600",
+
     features: [
       "Khai báo tạm trú",
       "Đăng ký nơi cư trú",
@@ -102,7 +90,6 @@ const faqs = [
   title={page.title}
   icon={page.icon}
   description={page.description}
- 
   heroBackground="/hero-service.jpg"
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -110,7 +97,7 @@ const faqs = [
       <!-- Introduction -->
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Dịch vụ lao động nước ngoài toàn diện</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p class="text-xl text-gray-900 max-w-3xl mx-auto">
           Chúng tôi có kinh nghiệm dày dặn trong việc tư vấn thủ tục cho người lao động nước ngoài
           tại Việt Nam, bao gồm các dịch vụ như: Visa cho người nước ngoài tại Việt Nam, Giấy phép
           lao động, Thẻ tạm trú.
@@ -122,7 +109,7 @@ const faqs = [
         {
           services.map((service) => (
             <div class="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div class={`bg-gradient-to-r ${service.colorClass} text-white p-6`}>
+              <div class="bg-gradient-to-r from-blue-700 to-blue-800 text-white p-6">
                 <div class="flex items-start gap-4">
                   <div class="flex-shrink-0 w-12 h-12 bg-white/30 backdrop-blur-md rounded-lg flex items-center justify-center border-2 border-white/40">
                     <svg
@@ -147,7 +134,7 @@ const faqs = [
                   {service.features.map((feature) => (
                     <li class="flex items-start">
                       <svg
-                        class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0"
+                        class="w-5 h-5 text-gray-900 mt-0.5 mr-3 flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -159,14 +146,14 @@ const faqs = [
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span class="text-gray-600">{feature}</span>
+                      <span class="text-gray-900">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-200">
                   <div>
-                    <div class="text-sm text-gray-500">Chi phí từ</div>
+                    <div class="text-sm text-gray-900">Chi phí từ</div>
                     <div class="text-lg font-bold text-gray-900">{service.price}</div>
                   </div>
                   <a
@@ -184,7 +171,9 @@ const faqs = [
 
       <!-- Process Section -->
       <div class="bg-gradient-to-r from-blue-700 to-blue-800 rounded-lg p-8 mb-16 text-white">
-        <h3 class="text-2xl font-bold mb-4 md:mb-6 text-center">Quy trình xin giấy phép lao động</h3>
+        <h3 class="text-2xl font-bold mb-4 md:mb-6 text-center">
+          Quy trình xin giấy phép lao động
+        </h3>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           {
             [
@@ -206,17 +195,19 @@ const faqs = [
       </div>
 
       <!-- FAQ Section -->
-      <div class="bg-gray-50 rounded-lg p-8">
-        <h3 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 text-center">Câu hỏi thường gặp</h3>
+      <div class="bg-blue-100 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
+          MỘT SỐ CÂU HỎI THƯỜNG GẶP
+        </h3>
         <div class="space-y-4 max-w-4xl mx-auto">
           {
             faqs.map((faq) => (
               <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
                 <details class="group">
-                  <summary class="flex items-center justify-between p-3 md:p-6 cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                  <summary class="flex items-center justify-between p-3 md:p-6 cursor-pointer bg-blue-100 hover:bg-gray-100 transition-colors duration-200">
                     <h3 class="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
                     <svg
-                      class="w-6 h-6 text-gray-500 transform group-open:rotate-180 transition-transform duration-200 flex-shrink-0"
+                      class="w-6 h-6 text-gray-900 transform group-open:rotate-180 transition-transform duration-200 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -230,7 +221,7 @@ const faqs = [
                     </svg>
                   </summary>
                   <div class="p-3 md:p-6 border-t border-gray-200">
-                    <div class="prose prose-sm max-w-none text-gray-700" set:html={faq.a} />
+                    <div class="prose prose-sm max-w-none text-gray-900" set:html={faq.a} />
                   </div>
                 </details>
               </div>
