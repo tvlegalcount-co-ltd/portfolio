@@ -72,7 +72,7 @@ const branches = [
           {
             branches.map((branch) => (
               <div class="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
-                <div class="bg-gradient-to-r from-blue-700 to-blue-800 text-white p-6">
+                <div class="bg-gradient-to-r from-gray-600 to-gray-700 text-white p-6">
                   <div class="flex items-start gap-4">
                     <div class="flex-shrink-0 w-12 h-12 bg-white/30 backdrop-blur-md rounded-lg flex items-center justify-center border-2 border-white/40">
                       <svg
@@ -106,10 +106,12 @@ const branches = [
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-3">
+          <h2
+            class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3"
+          >
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
-                class="w-6 h-6 text-gray-900"
+                class="w-6 h-6 text-blue-700"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -129,7 +131,7 @@ const branches = [
               service.whatYouProvide.map((item) => (
                 <li class="flex items-start">
                   <svg
-                    class="w-6 h-6 text-gray-900 mt-0.5 mr-4 flex-shrink-0"
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -156,10 +158,12 @@ const branches = [
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-3">
+          <h2
+            class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3"
+          >
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
-                class="w-6 h-6 text-gray-900"
+                class="w-6 h-6 text-blue-700"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -178,7 +182,7 @@ const branches = [
               service.whatYouReceive.map((item) => (
                 <li class="flex items-start">
                   <svg
-                    class="w-6 h-6 text-gray-900 mt-0.5 mr-4 flex-shrink-0"
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -205,10 +209,12 @@ const branches = [
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
-          <h2 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-3">
+          <h2
+            class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3"
+          >
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
-                class="w-6 h-6 text-gray-900"
+                class="w-6 h-6 text-blue-700"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -228,7 +234,7 @@ const branches = [
               service.consulting.map((item) => (
                 <li class="flex items-start">
                   <svg
-                    class="w-6 h-6 text-gray-900 mt-0.5 mr-4 flex-shrink-0"
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -337,7 +343,7 @@ const branches = [
                 <div class="flex items-center gap-3 mb-4">
                   <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg
-                      class="w-6 h-6 text-gray-900"
+                      class="w-6 h-6 text-blue-700"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -356,7 +362,7 @@ const branches = [
                   {feature.items.map((item) => (
                     <li class="flex items-start">
                       <svg
-                        class="w-5 h-5 text-gray-900 mt-0.5 mr-2 flex-shrink-0"
+                        class="w-5 h-5 text-blue-700 mt-0.5 mr-2 flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -467,10 +473,10 @@ const branches = [
             ].map((faq) => (
               <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
                 <details class="group">
-                  <summary class="flex items-center justify-between p-3 md:p-6 cursor-pointer bg-blue-100 hover:bg-gray-100 transition-colors duration-200">
+                  <summary class="flex items-center justify-between p-3 md:p-6 cursor-pointer hover:bg-gray-100 transition-colors duration-200">
                     <h3 class="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
                     <svg
-                      class="w-6 h-6 text-gray-900 transform group-open:rotate-180 transition-transform duration-200 flex-shrink-0"
+                      class="w-6 h-6 text-blue-700 transform group-open:rotate-180 transition-transform duration-200 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
