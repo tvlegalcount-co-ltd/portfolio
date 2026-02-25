@@ -140,7 +140,8 @@ export const seo = {
   defaultTitle: "TV Legal Count",
   defaultDescription:
     "Dịch vụ tư vấn pháp lý, thành lập doanh nghiệp, kế toán thuế trọn gói và chuyên nghiệp",
-  siteUrl: "https://tvlegalcount.com",
+  // Sẽ tự động đọc từ astro.config.mjs thông qua Astro.site
+  // Trong component có thể dùng: const { site } = Astro.props
 };
 
 // Pricing
