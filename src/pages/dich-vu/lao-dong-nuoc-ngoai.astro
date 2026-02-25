@@ -150,19 +150,6 @@ const faqs = [
                     </li>
                   ))}
                 </ul>
-
-                <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-200">
-                  <div>
-                    <div class="text-sm text-gray-900">Chi phí từ</div>
-                    <div class="text-lg font-bold text-gray-900">{service.price}</div>
-                  </div>
-                  <a
-                    href={service.href}
-                    class="inline-flex items-center px-6 py-3 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
-                  >
-                    Xem chi tiết
-                  </a>
-                </div>
               </div>
             </div>
           ))
@@ -195,7 +182,7 @@ const faqs = [
       </div>
 
       <!-- FAQ Section -->
-      <div class="bg-blue-100 rounded-lg p-8">
+      <div class="rounded-lg p-8">
         <h3 class="text-2xl font-bold text-gray-900 mb-4 md:mb-6 text-center">
           MỘT SỐ CÂU HỎI THƯỜNG GẶP
         </h3>
@@ -204,7 +191,7 @@ const faqs = [
             faqs.map((faq) => (
               <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
                 <details class="group">
-                  <summary class="flex items-center justify-between p-3 md:p-6 cursor-pointer bg-blue-100 hover:bg-gray-100 transition-colors duration-200">
+                  <summary class="flex items-center justify-between p-3 md:p-6 cursor-pointer hover:bg-gray-100 transition-colors duration-200">
                     <h3 class="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
                     <svg
                       class="w-6 h-6 text-gray-900 transform group-open:rotate-180 transition-transform duration-200 flex-shrink-0"
