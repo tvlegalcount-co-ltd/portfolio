@@ -1,6 +1,5 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
-import { getFullPath } from "../../utils/url";
 
 const service = {
   id: "adjust-irc",
@@ -109,7 +108,7 @@ const faqs = [
           >
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
-                class="w-6 h-6 text-gray-900"
+                class="w-6 h-6 text-blue-700"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -123,7 +122,7 @@ const faqs = [
             </div>
             Tổng quan về Dịch vụ
           </h2>
-          <p class="text-blue-900 text-lg leading-relaxed mb-4">
+          <p class="text-gray-700 text-lg leading-relaxed mb-4">
             Trong quá trình hoạt động, doanh nghiệp có vốn đầu tư nước ngoài thường xuyên có nhu cầu
             điều chỉnh Giấy chứng nhận đăng ký đầu tư (IRC) do thay đổi về thông tin nhà đầu tư, quy
             mô dự án, vốn đầu tư hoặc các yếu tố khác. Việc điều chỉnh cần thực hiện đúng thủ tục
@@ -148,7 +147,7 @@ const faqs = [
           >
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
-                class="w-6 h-6 text-gray-900"
+                class="w-6 h-6 text-blue-700"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -168,7 +167,7 @@ const faqs = [
               cases.map((item) => (
                 <li class="flex items-start">
                   <svg
-                    class="w-6 h-6 text-gray-900 mt-0.5 mr-4 flex-shrink-0"
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -206,7 +205,7 @@ const faqs = [
                 <div class="flex items-center gap-4 mb-4">
                   <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                     <svg
-                      class="w-6 h-6 text-gray-900"
+                      class="w-6 h-6 text-blue-700"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -243,7 +242,7 @@ const faqs = [
           >
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg
-                class="w-6 h-6 text-gray-900"
+                class="w-6 h-6 text-blue-700"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -263,7 +262,7 @@ const faqs = [
               documents.map((item) => (
                 <li class="flex items-start">
                   <svg
-                    class="w-6 h-6 text-gray-900 mt-0.5 mr-4 flex-shrink-0"
+                    class="w-6 h-6 text-blue-700 mt-0.5 mr-4 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -379,7 +378,7 @@ const faqs = [
                 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-4">
                   <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg
-                      class="w-6 h-6 text-gray-900"
+                      class="w-6 h-6 text-blue-700"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -398,7 +397,7 @@ const faqs = [
                   {feature.items.map((item) => (
                     <li class="flex items-start">
                       <svg
-                        class="w-5 h-5 text-gray-900 mt-0.5 mr-2 flex-shrink-0"
+                        class="w-5 h-5 text-blue-700 mt-0.5 mr-2 flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -457,32 +456,6 @@ const faqs = [
               </details>
             ))
           }
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-8 md:py-16 bg-blue-700 text-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-4">Bạn cần tư vấn thêm?</h2>
-        <p class="text-xl text-blue-100 mb-8">
-          Liên hệ ngay với chúng tôi để được tư vấn chi tiết về thủ tục điều chỉnh IRC
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href={getFullPath("/lien-he")}
-            class="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200 inline-block"
-          >
-            Gửi yêu cầu tư vấn
-          </a>
-          <a
-            href={getFullPath("/dich-vu/dieu-chinh-giay-chung-nhan-dang-ky-dau-tu")}
-            class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200 inline-block"
-          >
-            Xem dịch vụ khác
-          </a>
         </div>
       </div>
     </div>
