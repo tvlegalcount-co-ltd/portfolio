@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0274be;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#013052;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="150" fill="#ffffff" opacity="0.05"/>
+  <circle cx="1100" cy="530" r="200" fill="#ffffff" opacity="0.05"/>
+
+  <!-- Contact Icon -->
+  <g transform="translate(540, 120) scale(4)">
+    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Text Content -->
+  <text x="600" y="320" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#ffffff" text-anchor="middle">Liên hệ với chúng tôi</text>
+  <text x="600" y="380" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle" opacity="0.9">Tư vấn miễn phí 24/7</text>
+
+  <!-- Contact info badges -->
+  <rect x="300" y="420" width="600" height="60" rx="10" fill="#ffffff" opacity="0.15"/>
+  <text x="600" y="460" font-family="Arial, sans-serif" font-size="24" fill="#ffffff" text-anchor="middle">Hotline: 0933.665.666</text>
+
+  <rect x="300" y="500" width="600" height="50" rx="10" fill="#ffffff" opacity="0.15"/>
+  <text x="600" y="533" font-family="Arial, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">www.tvlegalcount.com</text>
+</svg>

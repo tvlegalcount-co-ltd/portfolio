@@ -3,6 +3,13 @@ import PageLayout from "../../layouts/PageLayout.astro";
 import { companyInfo } from "../../config";
 import { getFullPath } from "../../utils/url";
 
+const seo = {
+  title: "Dịch vụ - TV Legal Count",
+  description:
+    "Dịch vụ tư vấn pháp lý, thành lập doanh nghiệp, kế toán thuế trọn gói và chuyên nghiệp. Giải pháp toàn diện giúp doanh nghiệp phát triển bền vững.",
+  image: "/og-service.svg",
+};
+
 const page = {
   title: "Dịch vụ",
   description: "Giải pháp toàn diện giúp doanh nghiệp phát triển bền vững",
@@ -94,9 +101,10 @@ const services = [
 ---
 
 <PageLayout
-  title={page.title}
+  title={seo.title}
   icon={page.icon}
-  description={page.description}
+  description={seo.description}
+  image={seo.image}
   heroBackground="/hero-service.jpg"
 >
   <!-- Why Choose Us -->
